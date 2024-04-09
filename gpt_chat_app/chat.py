@@ -7,8 +7,6 @@ from gpt_chat_app.db import get_db
 
 from openai import OpenAI
 
-import asyncio
-
 bp = Blueprint('chat', __name__)
 
 messages = []
@@ -43,8 +41,8 @@ def generate_reply(query):
 @bp.route('/', methods=('GET', 'POST'))
 def index():
     #messages.append(['My first message', 'My second message'])
+    db = get_db()
     if request.method == 'POST':
-        db = get_db()
         query = request.form['query']
         error = None
 
@@ -59,6 +57,8 @@ def index():
             reply = generate_reply(query)
             #post message to db
             post_message(db, reply, 1)
+            # Redirect to a GET request after processing the form
+            return redirect(url_for('chat.index'))
 
     messages = get_messages(db)
     return render_template('base.html', messages=messages)

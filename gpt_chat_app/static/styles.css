@@ -22,15 +22,14 @@ ul, ol {
 .content {
     width: 67%;
     margin: 0 auto;
-    background-color: green;
+    height: 100vh;
+    overflow: auto;
   }
 
 .response-content {
     margin: 0 auto;
-    background-color: red;
 }
 
 .message {
     margin: 0 auto;
-    background-color: blue;
 }

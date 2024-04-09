@@ -10,8 +10,10 @@
             {% block content %}
             {% for message in messages %}
                 {% if  message['reply'] == 0 %}
-                    <p>User: </p>
+                    <img src="images/user_icon.png" alt="User icon">
+                    <p>User </p>s
                 {% else %}
+                    <img src="images/bot_icon.png" alt="Bot icon">
                     <p>Bot: </p>
                 {% endif %}
                 <p>{{ message['created'] }}</p>
