@@ -1,4 +1,4 @@
-#!/Users/denisdutka/Public/repos/gpt-tutorial/venv/bin/python3.11
+#!/Users/denisdutka/Public/repos/gpt-tutorial/venv/bin/python3.12
 # -*- coding: utf-8 -*-
 import re
 import sys

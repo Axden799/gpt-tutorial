@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<title>{% block title %}{% endblock %} - GPT Chat App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<nav>
+    <h1>GPT Chat App</h1>
+</nav>
+<section class="content">
+    <div class="response-content">
+        <div class="message">
+            {% block content %}
+            {% for message in messages %}
+                {% if  message['reply'] == 0 %}
+                    <p>User: </p>
+                {% else %}
+                    <p>Bot: </p>
+                {% endif %}
+                <p>{{ message['created'] }}</p>
+                <p>{{ message['message'] }}</p>
+                <br>
+            {% endfor %}
+        {% endblock content %}
+        </div>
+    </div>
+    <form method="post">
+        <label for="query">Enter a query</label>
+        <textarea name="query" id="query" required>{{ request.form['query'] }}</textarea>
+        <input type="submit" value="Submit">
+    </form>
+</section>

@@ -1,0 +1,36 @@
+/* CSS Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+/* Link Styles */
+a {
+    color: #007bff;
+    text-decoration: none;
+  }
+a:hover {
+    text-decoration: underline;
+  }
+
+/* List Styles */
+ul, ol {
+    list-style: none;
+  }
+
+.content {
+    width: 67%;
+    margin: 0 auto;
+    background-color: green;
+  }
+
+.response-content {
+    margin: 0 auto;
+    background-color: red;
+}
+
+.message {
+    margin: 0 auto;
+    background-color: blue;
+}
