@@ -9,23 +9,26 @@
         <div class="message">
             {% block content %}
             {% for message in messages %}
-                {% if  message['reply'] == 0 %}
-                    <img src="images/user_icon.png" alt="User icon">
-                    <p>User </p>s
-                {% else %}
-                    <img src="images/bot_icon.png" alt="Bot icon">
-                    <p>Bot: </p>
+                <div class="message-header">
+                    {% if  message['reply'] == 0 %}
+                        <img src="{{ url_for('static', filename='/images/user_icon.png') }}" alt="User icon">
+                        <p>User</p>
+                    {% else %}
+                        <img src="{{ url_for('static', filename='/images/bot_icon.png') }}" alt="Bot icon">
+                        <p>Bot</p>
                 {% endif %}
-                <p>{{ message['created'] }}</p>
-                <p>{{ message['message'] }}</p>
+                </div>
+                <div class="message-body">
+                    <p class="date">{{ message['created'] }}</p>
+                    <p>{{ message['message'] }}</p>
+                </div>
                 <br>
             {% endfor %}
         {% endblock content %}
         </div>
     </div>
-    <form method="post">
-        <label for="query">Enter a query</label>
-        <textarea name="query" id="query" required>{{ request.form['query'] }}</textarea>
-        <input type="submit" value="Submit">
+    <form action="{{ url_for('chat.submit_query') }}" method="post" class="query-form">
+        <textarea placeholder="Enter a query..." class="query-box" name="query" id="query" required>{{ request.form['query'] }}</textarea>
+        <input type="submit" value="Submit" class="submit-button">
     </form>
 </section>

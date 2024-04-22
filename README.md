@@ -9,4 +9,8 @@ flask --app gpt_chat_app init-db
 
 docker build -t gpt-chat-app:v1.0 .
 
-docker run -d -p 5000:5000 gpt-chat-app:v1.0
+docker run -d -p 5000:5000 -v /var/run/docker.sock:/var/run/docker.sock gpt-chat-app:v1.0
+
+STOP all docker containers: docker stop $(docker ps -q)
+
+pip freeze > requirements.txt 

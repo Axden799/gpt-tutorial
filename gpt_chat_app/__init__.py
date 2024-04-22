@@ -1,6 +1,7 @@
 import os
 
 from flask import Flask
+from .classes.two_agent import TwoAgent
 
 def create_app(test_config=None):
     # create and configure the app
@@ -8,6 +9,7 @@ def create_app(test_config=None):
     app.config.from_mapping(
         SECRET_KEY='dev',
         DATABASE=os.path.join(app.instance_path, 'gpt_chat_app.sqlite'),
+        CODE_GEN = TwoAgent()
     )
 
     if test_config is None:
@@ -27,6 +29,7 @@ def create_app(test_config=None):
     db.init_app(app)
 
     from . import chat
+    code_generator = TwoAgent()
     app.register_blueprint(chat.bp)
     app.add_url_rule('/', endpoint='index')
     
